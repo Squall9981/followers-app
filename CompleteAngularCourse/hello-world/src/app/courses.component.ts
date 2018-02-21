@@ -8,13 +8,23 @@ import {Component} from '@angular/core';
         <ul>
             <li *ngFor="let course of courses">{{course}}</li>
         </ul>
-        <button class="btn btn-primary"></button>
+        <button class="btn btn-primary" [class.active]="isActive">Save</button>
+        <button [style.backgroundColor]="isActive ? 'blue' : 'white'">Style Binding</button>
+        <div (click)="onDivClicked()">
+        <button (click)="onSave($event)">Event Binding</button>
+        </div>
+        <input #email (keyup.enter)="onKeyUp(email.value)" />
     `
+    //bind class to a field, if the field is true the class will go. [class.active]="isActive"
     //Prefix directives that modify the structure of the DOM, prefix with *
+    //Events bubble up the DOM tree, button and div above both handle event.
+    //can filter events. keyup.enter will only trigger when enter is pressed.
+    //#email = template variable
 })
 
 export class CoursesComponent {
     title = "List of courses";
+    isActive = true;
 
     courses;
 
@@ -22,6 +32,19 @@ export class CoursesComponent {
     constructor(service: CoursesService) {
         //let service = new CoursesService(); //tightly couples component to service
         this.courses = service.getCourses();
+    }
+
+    onSave($event){
+        $event.stopPropagation();
+        console.log('button was clicked', $event);
+    }
+
+    onDivClicked() {
+        console.log("div was clicked");
+    }
+
+    onKeyUp(email) {
+        console.log(email);
     }
 
     //Logic for calling HTTP Service in components = Option 1
