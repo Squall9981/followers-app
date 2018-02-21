@@ -1,0 +1,14 @@
+<div class="container-fluid">
+<p>{{authors.length}} Authors</p>
+
+<ul>
+  <!--Use string interpolation for rendering test {{}}
+      Use property binding for binding data to a DOM element []
+        i.e. <img [src]="imageUrl" />
+        Property binding is only 1 way, component to DOM
+  -->
+  <li *ngFor="let author of authors">{{author}}</li>
+</ul>
+
+<button class="btn btn-primary">Button</button>
+</div>
