@@ -1,0 +1,12 @@
+Component:
+Encapsulates data, html, and logic
+Every app has at least 1 component, called App or Root component.
+
+1. Create
+2. Register in module
+3. add element in HTML
+
+Modules:
+Contains group of related components.
+Has at least 1 module called app module.
+

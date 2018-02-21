@@ -1,0 +1,10 @@
+Set up dev environment
+
+1. download node
+2. run node --version to verify
+3. intall angular cli (npm install -g @angular/cli)
+4. use angular cli to create new product (ng new {projectname})
+5. install typescript if desired (npm install -g typescript)
+6. to compile typescript: tsc {filename}.ts
+7. to run javascript in node command window: node {filename}.js
+8. can pipe them to run together: tsc {file}.ts | node {file}.js
