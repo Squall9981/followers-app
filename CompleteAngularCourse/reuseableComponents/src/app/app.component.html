@@ -1,4 +1,14 @@
 <!-- <img [src] = "imgUrl" /> DOM binding -->
 <!-- <button (click)="onClick()"></button> Event binding. -->
 
-<favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChange()"></favorite>
+<!--<favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChange()"></favorite>-->
+
+<!-- using alias -->
+<!-- need to pass $event here to catch the event from the broadcaster. -->
+<!--<h1>Hello World</h1>
+<favorite [is-favorite]="post.isFavorite" (change)="onFavoriteChanged($event)"></favorite><span class="fa fa-star"></span>-->
+<!--<bootstrap-panel>
+    <ng-container class="heading">Heading 2</ng-container>
+    <div class="body"><h2>body</h2><p>Content</p></div>
+</bootstrap-panel>-->
+{{tweet.body}}<like [likesCount]="tweet.likesCount" [isActive]="tweet.isLiked"></like>
