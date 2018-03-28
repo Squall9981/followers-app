@@ -5,12 +5,16 @@ import {FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { Assignment6Component } from './assignment6/assignment6.component';
+import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    Assignment6Component,
+    NewCourseFormComponent
   ],
   imports: [
     BrowserModule,
