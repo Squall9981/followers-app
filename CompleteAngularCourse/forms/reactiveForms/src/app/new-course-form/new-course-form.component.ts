@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormArray, FormControl } from '@angular/forms';
+import { FormGroup, FormArray, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'new-course-form',
@@ -7,9 +7,19 @@ import { FormGroup, FormArray, FormControl } from '@angular/forms';
   styleUrls: ['./new-course-form.component.css']
 })
 export class NewCourseFormComponent {
-  form = new FormGroup({
-    topics: new FormArray([])
-  });
+  form;
+
+  // Same as below, just SLIGHTLY cleaner
+  constructor(fb: FormBuilder) {
+    this.form = fb.group({
+      name: ['', Validators.required],
+      contact: fb.group({
+        email: [],
+        phone: []
+      }),
+      topics: fb.array([])
+    });
+  }
 
   addTopic(topic: HTMLInputElement) {
     this.topics.push(new FormControl(topic.value));
