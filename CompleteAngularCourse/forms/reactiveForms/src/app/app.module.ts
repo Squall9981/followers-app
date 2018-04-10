@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import {ChangePasswordComponent2} from './change-password2/change-password.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     AppComponent,
     SignupFormComponent,
     NewCourseFormComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ChangePasswordComponent2
   ],
   imports: [
     BrowserModule,
