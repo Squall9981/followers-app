@@ -1,3 +1,5 @@
+import { ErrorHandler } from '@angular/core';
+import { AppErrorHandler } from './common/app-error-handler';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -19,7 +21,10 @@ import { PostService } from './services/post.service';
     HttpModule
   ],
   providers: [
-    PostService
+    PostService,
+    // Can import error handler to use this instead of ErrorHandler
+    //Tells angular to use AppErrorHandler instead of Errorhandler.
+    {provide: ErrorHandler, useClass: AppErrorHandler}
   ],
   bootstrap: [AppComponent]
 })

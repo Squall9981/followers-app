@@ -20,9 +20,6 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this.service.getPosts().subscribe(response => {
       this.posts = response.json();
-    }, error => {
-      alert("An unexpected error occurred.");
-      console.log(error);
     });
   }
 
@@ -42,8 +39,8 @@ export class PostsComponent implements OnInit {
             // error would have the key/value pair of the input and error.
             // this.form.setErrors(error.originalError);
           } else {
-            alert("An unexpected error occurred.");
-            console.log(error);
+            // Rethrow error to be handled by global error handler.
+            throw error;
           }
         });
   }
@@ -54,16 +51,13 @@ export class PostsComponent implements OnInit {
     this.service.updatePost(postId, postBody)
       .subscribe(response => {
         console.log(response);
-      }, error => {
-        alert("An unexpected error occurred.");
-        console.log(error);
       });
     // put does whole object, patch only a few properties
     // this.http.put(this.url + '/posts', JSON.stringify(post));
   }
 
   deletePost(post) {
-    this.service.deletePost(post.id)
+    this.service.deletePost(345)
       .subscribe(response => {
         let index = this.posts.indexOf(post);
         this.posts.splice(index, 1);
@@ -71,8 +65,7 @@ export class PostsComponent implements OnInit {
         if(error instanceof NotFoundError) {
           alert('This post has already been deleted.');
         } else {
-          alert("An unexpected error occurred.");
-          console.log(error);
+          throw error;
         }
       });
   }
