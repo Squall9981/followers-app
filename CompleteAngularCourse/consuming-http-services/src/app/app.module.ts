@@ -1,3 +1,4 @@
+import { FollowerService } from './services/followers.service';
 import { ErrorHandler } from '@angular/core';
 import { AppErrorHandler } from './common/app-error-handler';
 
@@ -9,12 +10,14 @@ import {HttpModule} from '@angular/http';
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostService } from './services/post.service';
+import { Assign8Component } from './assign8/assign8.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostsComponent
+    PostsComponent,
+    Assign8Component
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { PostService } from './services/post.service';
     PostService,
     // Can import error handler to use this instead of ErrorHandler
     //Tells angular to use AppErrorHandler instead of Errorhandler.
-    {provide: ErrorHandler, useClass: AppErrorHandler}
+    {provide: ErrorHandler, useClass: AppErrorHandler},
+    FollowerService
   ],
   bootstrap: [AppComponent]
 })
