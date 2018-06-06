@@ -40,3 +40,73 @@ Environments:
     - Often have Dev, Test, and Production Environments
     - AngularCli can use environment files by using --env=... (or --env i.e. --prod)
     - Autoimport will try to import environment.prod, but this is bad. Always import environment, angularCLI will take care of changing to proper environment.
+
+Adding Custom Environment:
+    - Environments Folder - environment.{name}.ts
+    - Register environment with AngularCli
+        - .angular-cli.json - Register Environment in environments object
+        - built/serve with --environment={environmentName}
+    - No hot module replacement when not working with Development environment.
+
+Linting with Angular CLI
+    - Linter - Program that analyzes code based on pre-configured rules.
+    - TSLint - popular Linter
+    - tslint is installed by default with AngularCli
+    - tslint.json in project root is configuration file3
+    - Angulr CLI - ng lint
+    - ng lint --fix : fixes all errors that are easily fixable.
+
+Linting in VSCode
+    - Install extension
+    - Fix individual errors or use command pallete (ctrl + shift + p) to fix all errors.
+
+Other Deployment Options:
+    - Copy contents of dist folder to webserver.
+    - Use FTP.
+    - GitHub Pages - Houses html, css, javascript; no back-end.
+    - Firebase - back-end for web and mobile applications.
+    - Heroku - Cloud platform, custom back-end.
+    - Azure - Microsoft built custom back-end platform. Like Heroku.
+
+Deploying to GitHub Pages:
+    - https://pages.github.com
+    - Application is hosted from GitHub repository
+    - For simple applications without a backend.
+    
+    - Create new repository in GitHub
+    - Register repository as origin of local git repository.
+    - install node package to deploy to github pages.
+    - install globally: npm i -g angular-cli-ghpages
+    - ng build --prod --base-href="github repo browser" to build application
+    - example: --base-href="https://squall9981.github.io/followers-app/CompleteAngularCourse/Deployment/deploy-demo/"
+    - Deploy to github pages:
+        - angular-cli-ghpages (ngh = shorthand)
+
+    - shortcut:
+        - package.json:
+            - under scripts, add new command
+            - "deploy:gh" : "ng build --prod --base-href='github repo browser/' && ngh"
+
+Deploying to Firebase:
+    - Google platform
+    - Used for building backend of web/mobile applies
+    - Database
+    - Cloud Messaging
+    - Hosting
+    - console.firebase.google.com
+    - installed firebase tools globally:
+        - npm i -g firebase-tools
+    - Login to firebase account in terminal: firebase Login
+    - Initialize firebaes in project folder:
+        - firebase init
+    - ng build --prod
+    - Need single page application configuration
+        - "rewrites": [{"source": "**", "destination":"index.html"}]
+
+Deploying to Heroku:
+    - Cloud platform as a service
+    - Build backend yourself
+    - Server.js file is super simple node application (in this project)
+    - heroku.com -> create account
+    - search google for heroku cli
+    - Download and install cli.
