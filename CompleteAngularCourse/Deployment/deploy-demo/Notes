@@ -1,0 +1,42 @@
+Optimization Techniques:
+
+    1. Minification - Remove comments and white spaces
+    2. Uglification - Renaming long variables and functions in to short, cryptic names
+    3. Bundling - Combination of multiple js files. Avoids sending 100s of requests since client can download bundles instead of individual files.
+    4. Dead code elimination - Removing any code that is not part of the applicaion. e.g. Create classes and haven't used them, can safely remove from final bundle.
+    5. Ahead-of-time (AOT) compilation - Pre-compile code and templates.
+
+    ng build -prod //This applies all of the above methods to produce highly optimized bundles.
+
+JIT VS AOT Compilation:
+
+    Angular Compiler - Takes javascript code and produces javascript code.
+        - Turn {{test}} variables in to static text.
+        - All variables and bindings are compiled in to regular JS code.
+        - Works its way down the tree of templates and renders them in regular JS.
+
+    Just-in-Time Compilation - Compilation that happens at runtime.
+        - Inefficient for production
+        - Happens for every user
+        - More components = slower compilation
+        - Have to ship angular compiler with the vendor bundle (that's why the vendor bundle is so large in dev)
+
+    Benefits of AOT:
+        - Faster startup
+        - Smaller bundle size
+        - Catch template errors earlier (at compile time before deployment)
+        - Better security (no templates to read, less chance for javascript injection attacks).
+
+Run Angular Compiler:
+    -node_modules/.bin/ngc at command prompt
+
+Building Applications with Angular CLI:
+    -ng build --prod Creates deployable package that can be deployed to prod server.
+    - Bundles have map and bundle file. Map will map a piece of js code to it's original source file to debug application in browser.
+    - Hashes files to avoid caching
+    - Copy folder to non-development machine to deployable
+
+Environments:
+    - Often have Dev, Test, and Production Environments
+    - AngularCli can use environment files by using --env=... (or --env i.e. --prod)
+    - Autoimport will try to import environment.prod, but this is bad. Always import environment, angularCLI will take care of changing to proper environment.
