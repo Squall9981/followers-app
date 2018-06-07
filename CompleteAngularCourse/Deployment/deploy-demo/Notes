@@ -110,3 +110,15 @@ Deploying to Heroku:
     - heroku.com -> create account
     - search google for heroku cli
     - Download and install cli.
+    - heroku Login
+    - heroku create {name} to name app, leave blank to let it generate a name
+    - in package.json
+        - Heroku looks under dependencies and installs based off of package
+        - Heroku does not install angularcli since it is in dev dependencies
+        - move angular cli and compiler cli to dependencies, not dev
+        - Move type script dependency
+        - add "postinstall" in scripts
+            - ng build --prod
+        - Change start script to start node server. "node server.js"
+    - in server.js
+        -express : need to add as dependency in package.json
