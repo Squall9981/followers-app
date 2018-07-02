@@ -122,3 +122,4 @@ Deploying to Heroku:
         - Change start script to start node server. "node server.js"
     - in server.js
         -express : need to add as dependency in package.json
+    *note*: git remote add heroku git@{herokuurl.git} --- This add heroku as a remote git
